@@ -1,0 +1,4 @@
+package com.example.red_app.ui.theme.screen.login
+
+class LoginViewModel {
+}
