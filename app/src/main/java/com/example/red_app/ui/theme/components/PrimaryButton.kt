@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -22,8 +23,8 @@ import androidx.compose.ui.unit.sp
 fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
-    modifier: Modifier,
-    enabled: Boolean = true,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
 ) {
     val cornerRadius = 16.dp
 
@@ -33,24 +34,23 @@ fun PrimaryButton(
             .fillMaxWidth()
             .padding(horizontal = 24.dp),
         enabled = enabled,
-        shape = RoundedCornerShape(cornerRadius),
+        shape = RoundedCornerShape(size = cornerRadius),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent,
             contentColor = Color.White,
-            disabledContainerColor = Color.Gray,
+            disabledContainerColor = Color.Gray
         ),
         contentPadding = PaddingValues()
     ) {
         Box(
             modifier = Modifier
-                .background(if(enabled) Color.Blue else Color.LightGray)
+                .background(color = if (enabled) Blue else Color.LightGray)
                 .fillMaxWidth()
                 .height(56.dp)
-                .clip(RoundedCornerShape(cornerRadius)),
+                .clip(shape = RoundedCornerShape(size = cornerRadius)),
             contentAlignment = Alignment.Center
-        ){
+        ) {
             Text(text = text, fontSize = 18.sp)
-
         }
     }
 }
